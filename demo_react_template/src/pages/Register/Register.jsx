@@ -1,5 +1,5 @@
-import { Card, Input, Button, Typography, DatePicker } from "antd";
-import { UserOutlined, MailOutlined, LockOutlined, PhoneOutlined, HomeOutlined } from "@ant-design/icons";
+import { Card, Input, Button, Typography, message } from "antd";
+import { UserOutlined, MailOutlined, LockOutlined, PhoneOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 const { Link } = Typography;
@@ -10,9 +10,7 @@ const Register = () => {
         email: "",
         password: "",
         confirmPassword: "",
-        phone: "",
-        birthdate: "",
-        address: "",
+        phone: ""
     });
 
     const handleChange = (e) => {
@@ -23,16 +21,58 @@ const Register = () => {
         });
     };
 
-    const handleDateChange = (date, dateString) => {
-        setFormData({
-            ...formData,
-            birthdate: dateString,
-        });
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form data submitted:", formData);
+        const { username, email, password, confirmPassword, phone } = formData;
+
+        if (!username || !email || !password || !phone) {
+            message.error("Vui lòng nhập đầy đủ các trường bắt buộc.");
+            return;
+        }
+
+        if (!validateEmail(email)) {
+            message.error("Email không hợp lệ.");
+            return;
+        }
+
+        if (password.length < 6 || password.length > 15) {
+            message.error("Mật khẩu phải từ 6 đến 15 ký tự.");
+            return;
+        }
+
+        if (password !== confirmPassword) {
+            message.error("Mật khẩu xác nhận không khớp.");
+            return;
+        }
+
+        try {
+            // Kiểm tra username đã tồn tại chưa
+            const checkRes = await fetch("http://localhost:5000/users?username=" + username);
+            const existingUsers = await checkRes.json();
+            if (existingUsers.length > 0) {
+                message.error("Tên đăng nhập đã tồn tại.");
+                return;
+            }
+
+            // Gửi dữ liệu đăng ký
+            const res = await fetch("http://localhost:5000/users", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ username, email, phone, password })
+            });
+
+            if (res.ok) {
+                message.success("Thêm dữ liệu thành công");
+            } else {
+                message.error("Lỗi khi đăng ký.");
+            }
+        } catch {
+            message.error("Không thể kết nối đến server.");
+        }
     };
 
     return (
@@ -64,21 +104,6 @@ const Register = () => {
                     prefix={<PhoneOutlined />} 
                     name="phone"
                     value={formData.phone}
-                    onChange={handleChange}
-                    style={{ marginBottom: 16 }}
-                />
-                <DatePicker 
-                    size="large" 
-                    style={{ width: "100%", marginBottom: 16 }} 
-                    placeholder="Ngày tháng năm sinh"
-                    onChange={handleDateChange}
-                />
-                <Input 
-                    size="large" 
-                    placeholder="Địa chỉ thường trú" 
-                    prefix={<HomeOutlined />} 
-                    name="address"
-                    value={formData.address}
                     onChange={handleChange}
                     style={{ marginBottom: 16 }}
                 />

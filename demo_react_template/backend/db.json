@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "user1",
+      "email": "user1@example.com",
+      "phone": "0123456789",
+      "password": "password123"
+    },
+    {
+      "id": "2",
+      "username": "user2",
+      "email": "user2@example.com",
+      "phone": "0987654321",
+      "password": "password456"
+    },
+    {
+      "id": "3",
+      "username": "admin",
+      "email": "admin@example.com",
+      "phone": "0111222333",
+      "password": "adminpass"
+    },
+    {
+      "id": "4",
+      "username": "john_doe",
+      "email": "john.doe@example.com",
+      "phone": "0999888777",
+      "password": "johnpassword"
+    },
+    {
+      "id": "5",
+      "username": "jane_doe",
+      "email": "jane.doe@example.com",
+      "phone": "0777666555",
+      "password": "janepassword"
+    },
+    {
+      "id": "0f59",
+      "username": "user10",
+      "email": "user10@example.com",
+      "phone": "0123456891",
+      "password": "password123"
+    }
+  ]
+}
