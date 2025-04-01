@@ -51,7 +51,7 @@ const Register = () => {
 
         try {
             // Kiểm tra username đã tồn tại chưa
-            const checkRes = await fetch("http://localhost:5000/users?username=" + username);
+            const checkRes = await fetch(`http://localhost:3001/users?username=${username}`);
             const existingUsers = await checkRes.json();
             if (existingUsers.length > 0) {
                 message.error("Tên đăng nhập đã tồn tại.");
@@ -59,7 +59,7 @@ const Register = () => {
             }
 
             // Gửi dữ liệu đăng ký
-            const res = await fetch("http://localhost:5000/users", {
+            const res = await fetch("http://localhost:3001/users", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ username, email, phone, password })
@@ -127,7 +127,7 @@ const Register = () => {
                 />
                 <Button type="primary" block size="large" onClick={handleSubmit} style={{ marginBottom: 16 }}>Đăng ký</Button>
                 <div style={{ textAlign: "center" }}>
-                    <Link href="#">Đã có tài khoản? Đăng nhập</Link>
+                    <Link href="Login">Đã có tài khoản? Đăng nhập</Link>
                 </div>
             </Card>
         </div>

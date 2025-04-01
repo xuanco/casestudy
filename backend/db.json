@@ -41,6 +41,13 @@
       "email": "user10@example.com",
       "phone": "0123456891",
       "password": "password123"
+    },
+    {
+      "id": "19ac",
+      "username": "nguyen",
+      "email": "nguyengialam@gmail.com",
+      "phone": "0961598963",
+      "password": "matkhau231"
     }
   ]
 }
