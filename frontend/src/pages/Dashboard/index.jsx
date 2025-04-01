@@ -1,5 +1,5 @@
-//trangchu.
 import { useState } from "react";
+import { Link } from "react-router-dom"; // Import Link để chuyển hướng tới trang chi tiết
 import hinh1 from "../../assets/hinhanh/hinh1.png";
 import hinh2 from "../../assets/hinhanh/hinh2.png";
 import hinh3 from "../../assets/hinhanh/hinh3.png";
@@ -24,7 +24,7 @@ const provinces = [
 function Dashboard() {
     const [filters, setFilters] = useState({ location: "", status: "", type: "", price: "", area: "" });
     const [currentPage, setCurrentPage] = useState(1);
-    const housesPerPage = 3; // Số lượng nhà trên mỗi trang
+    const housesPerPage = 3;
 
     const handleChange = (e) => setFilters({ ...filters, [e.target.name]: e.target.value });
 
@@ -36,7 +36,6 @@ function Dashboard() {
         (filters.area ? parseInt(house.area.replace(/\D/g, "")) >= parseInt(filters.area) : true)
     );
 
-    // Xác định nhà trên trang hiện tại
     const indexOfLastHouse = currentPage * housesPerPage;
     const indexOfFirstHouse = indexOfLastHouse - housesPerPage;
     const currentHouses = filteredHouses.slice(indexOfFirstHouse, indexOfLastHouse);
@@ -44,9 +43,9 @@ function Dashboard() {
 
     return (
         <div className="p-6">
-           <h1 className="text-4xl font-extrabold text-red-500 uppercase text-center tracking-wide border-b-4 border-red-500 inline-block pb-2">
-    NHÀ TỐT
-</h1>
+            <h1 className="text-4xl font-extrabold text-red-500 uppercase text-center tracking-wide border-b-4 border-red-500 inline-block pb-2">
+                NHÀ TỐT
+            </h1>
 
             <div className="bg-white p-4 shadow-md rounded-lg mb-6 flex gap-4 flex-wrap">
                 <select name="location" value={filters.location} onChange={handleChange} className="border p-2 rounded w-full md:w-1/5">
@@ -89,7 +88,9 @@ function Dashboard() {
                             {currentHouses.map((house) => (
                                 <tr key={house.id} className="text-center">
                                     <td className="border border-black p-2"><img src={house.img} alt={house.name} className="w-20 h-20 object-cover mx-auto" /></td>
-                                    <td className="border border-black p-2">{house.name}</td>
+                                    <td className="border border-black p-2">
+                                        <Link to={`/house-detail/${house.id}`} className="text-blue-500">{house.name}</Link>
+                                    </td>
                                     <td className="border border-black p-2">{house.location}</td>
                                     <td className="border border-black p-2">{house.type}</td>
                                     <td className="border border-black p-2">{house.price}</td>

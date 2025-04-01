@@ -11,6 +11,7 @@ import HouseEdit from "./pages/houseedit/houseedit.jsx";
 import ManagerUsers from "./pages/managerusers/managerusers.jsx";
 import ManagerHouses from "./pages/managerhouses/managerhouses.jsx";
 import Profile from "./pages/profile/profile.jsx";
+import HouseDetail from "./pages/HouseDetail/housedetail.jsx";
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
                <Route path="managerusers" element={<ManagerUsers/>}/>
                <Route path="managerhouses" element={<ManagerHouses/>}/>
                <Route path="profile" element={<Profile/>}/>
+               <Route path="housedetail" element={<HouseDetail/>}/>
 
                
            </Route>

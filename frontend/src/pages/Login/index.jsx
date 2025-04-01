@@ -1,6 +1,7 @@
 import { Card, Input, Button, Typography, message } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Thêm useNavigate
 
 const { Link } = Typography;
 
@@ -9,6 +10,8 @@ const SignIn = () => {
         username: "",
         password: ""
     });
+
+    const navigate = useNavigate(); // Khởi tạo useNavigate
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -35,6 +38,8 @@ const SignIn = () => {
                 message.success("Đăng nhập thành công!");
                 // Lưu thông tin vào localStorage (tuỳ vào cách bạn muốn xử lý)
                 localStorage.setItem("user", JSON.stringify(users[0]));
+                // Chuyển hướng đến trang Dashboard sau khi đăng nhập thành công
+                navigate("/admin/home"); // Chuyển hướng tới trang Dashboard
             } else {
                 message.error("Tên đăng nhập hoặc mật khẩu không đúng.");
             }
@@ -66,7 +71,7 @@ const SignIn = () => {
                 />
                 <Button type="primary" block size="large" onClick={handleLogin} style={{ marginBottom: 16 }}>Đăng nhập</Button>
                 <div style={{ textAlign: "center" }}>
-                    <Link href="#">Quên mật khẩu?</Link> | <Link href="Register">Đăng ký</Link>
+                    <Link href="#">Quên mật khẩu?</Link> | <Link href="/register">Đăng ký</Link>
                 </div>
             </Card>
         </div>
@@ -74,3 +79,4 @@ const SignIn = () => {
 };
 
 export default SignIn;
+
