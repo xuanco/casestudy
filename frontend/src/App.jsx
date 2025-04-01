@@ -16,6 +16,7 @@ function App() {
            <Route path="/admin" element={<Master/>}>
                <Route path="dashboard" element={<Dashboard />} />
                <Route path="books" element={<BookList />} />
+              
            </Route>
        </Routes>
     </>

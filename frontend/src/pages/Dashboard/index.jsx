@@ -1,3 +1,4 @@
+//trangchu.
 import { useState } from "react";
 import hinh1 from "../../assets/hinhanh/hinh1.png";
 import hinh2 from "../../assets/hinhanh/hinh2.png";
