@@ -20,38 +20,38 @@ const categories = [
         id: 'Build',
         children: [
             {
-                id: 'Dashboard',
+                id: 'Home',
                 icon: <PeopleIcon/>,
                 active: false,
-                url: '/admin/dashboard'
+                url: '/admin/home'
             },
             {
-                id: 'Book Manager',
+                id: 'empty',
                 icon: <DnsRoundedIcon/>,
                 active: false,
                 url: '/admin/books'
             },
             {
-                id: 'Storage',
+                id: 'Managerusers',
                 icon: <PermMediaOutlinedIcon/>,
                 active: false,
-                url: '/admin/storage'
+                url: '/admin/managerusers'
 
             },
             {
-                id: 'Hosting',
+                id: 'managerhouses',
                 icon: <PublicIcon/>,
                 active: false,
-                url: '/admin/hosting'
+                url: '/admin/managerhouses'
             },
             {
-                id: 'Functions',
+                id: 'empty',
                 icon: <SettingsEthernetIcon/>,
                 active: false,
                 url: '/admin/functions'
             },
             {
-                id: 'Machine learning',
+                id: 'empty',
                 icon: <SettingsInputComponentIcon/>,
                 active: false,
                 url: '/admin/machine-learning'

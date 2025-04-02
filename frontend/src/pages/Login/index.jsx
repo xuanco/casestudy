@@ -1,7 +1,7 @@
 import { Card, Input, Button, Typography, message } from "antd";
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Thêm useNavigate
+import { useNavigate } from "react-router-dom";
 
 const { Link } = Typography;
 
@@ -11,7 +11,7 @@ const SignIn = () => {
         password: ""
     });
 
-    const navigate = useNavigate(); // Khởi tạo useNavigate
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -30,16 +30,25 @@ const SignIn = () => {
         }
 
         try {
-            // Kiểm tra thông tin đăng nhập
             const res = await fetch(`http://localhost:3001/users?username=${username}&password=${password}`);
             const users = await res.json();
 
             if (users.length > 0) {
+                const user = users[0];
+                
+                if (user.blocked) {
+                    message.error("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ quản trị viên.");
+                    return;
+                }
+                
                 message.success("Đăng nhập thành công!");
-                // Lưu thông tin vào localStorage (tuỳ vào cách bạn muốn xử lý)
-                localStorage.setItem("user", JSON.stringify(users[0]));
-                // Chuyển hướng đến trang Dashboard sau khi đăng nhập thành công
-                navigate("/admin/home"); // Chuyển hướng tới trang Dashboard
+                localStorage.setItem("user", JSON.stringify(user));
+
+                if (user.role === "admin") {
+                    navigate("/admin/managerusers");
+                } else {
+                    navigate("/");
+                }
             } else {
                 message.error("Tên đăng nhập hoặc mật khẩu không đúng.");
             }
@@ -79,4 +88,3 @@ const SignIn = () => {
 };
 
 export default SignIn;
-

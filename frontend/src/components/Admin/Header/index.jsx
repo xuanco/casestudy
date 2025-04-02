@@ -147,9 +147,9 @@ function Header(props) {
             <AppBar component="div" position="static" elevation={0} sx={{ zIndex: 0 }}>
                 <Tabs value={0} textColor="inherit">
                     <Tab label="Users" />
-                    <Tab label="Sign-in method" />
-                    <Tab label="Templates" />
-                    <Tab label="Usage" />
+                    <Tab label="Nhà Tốt" />
+                    <Tab label="Chợ Tốt Xe" />
+                    <Tab label="Việc Làm Tốt" />
                 </Tabs>
             </AppBar>
         </React.Fragment>

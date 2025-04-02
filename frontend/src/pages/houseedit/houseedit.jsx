@@ -1,191 +1,96 @@
  // Trang chỉnh sửa nhà  
- import { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+ import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const HouseEdit = () => {
-    const { id } = useParams(); // Lấy id của nhà từ URL
-    const navigate = useNavigate();
+  const { id } = useParams();  // Lấy ID từ URL
+  const navigate = useNavigate();
+  const [house, setHouse] = useState({
+    name: '',
+    location: '',
+    price: '',
+    area: '',
+    status: 'available',
+    img: ''
+  });
 
-    const [houseData, setHouseData] = useState({
-        name: "",
-        location: "",
-        type: "Căn hộ",
-        price: "",
-        area: "",
-        status: "available",
-        img: "",
-    });
+  useEffect(() => {
+    axios.get(`http://localhost:3001/houses/${id}`)
+      .then(response => setHouse(response.data))
+      .catch(error => console.error('Lỗi khi tải nhà:', error));
+  }, [id]);
 
-    const [loading, setLoading] = useState(true);
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setHouse(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
+  };
 
-    // Fetch dữ liệu nhà cần chỉnh sửa
-    useEffect(() => {
-        const fetchHouseData = async () => {
-            try {
-                const response = await fetch(`http://localhost:3001/houses/${id}`);
-                if (!response.ok) throw new Error("Không tìm thấy nhà!");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    axios.put(`http://localhost:3001/houses/${id}`, house)
+      .then(response => {
+        alert('Cập nhật nhà thành công!');
+        navigate('/');  // Quay về trang Home sau khi cập nhật
+      })
+      .catch(error => console.error('Lỗi khi cập nhật nhà:', error));
+  };
 
-                const data = await response.json();
-                setHouseData(data);
-                setLoading(false);
-            } catch (error) {
-                console.error("Lỗi khi tải dữ liệu:", error);
-                alert("Không thể tải dữ liệu nhà.");
-                navigate("/dashboard");
-            }
-        };
-
-        fetchHouseData();
-    }, [id, navigate]);
-
-    // Hàm xử lý thay đổi dữ liệu input
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setHouseData({ ...houseData, [name]: value });
-    };
-
-    // Hàm cập nhật thông tin nhà
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        const price = Number(houseData.price);
-        const area = Number(houseData.area);
-
-        if (!houseData.name || !houseData.location || !houseData.type || !price || !area) {
-            alert("Vui lòng điền đầy đủ thông tin hợp lệ!");
-            return;
-        }
-
-        try {
-            const response = await fetch(`http://localhost:5000/houses/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ ...houseData, price, area }),
-            });
-
-            if (response.ok) {
-                alert("Cập nhật thành công!");
-                navigate("/dashboard"); // Chuyển hướng về Dashboard
-            } else {
-                alert("Có lỗi xảy ra, vui lòng thử lại!");
-            }
-        } catch (error) {
-            console.error("Lỗi khi cập nhật:", error);
-            alert("Đã có lỗi xảy ra, vui lòng thử lại.");
-        }
-    };
-
-    if (loading) {
-        return <p className="text-center text-lg font-semibold text-gray-500">Đang tải dữ liệu...</p>;
-    }
-
-    return (
-        <div className="p-6">
-            <h1 className="text-4xl font-extrabold text-blue-500 uppercase text-center tracking-wide border-b-4 border-blue-500 inline-block pb-2">
-                Chỉnh Sửa Nhà
-            </h1>
-            <form onSubmit={handleSubmit} className="bg-white p-6 shadow-md rounded-lg">
-                {/* Tên nhà */}
-                <div className="mb-4">
-                    <label className="block text-lg font-medium text-gray-700">Tên nhà</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={houseData.name}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition"
-                    />
-                </div>
-
-                {/* Địa điểm */}
-                <div className="mb-4">
-                    <label className="block text-lg font-medium text-gray-700">Địa điểm</label>
-                    <input
-                        type="text"
-                        name="location"
-                        value={houseData.location}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition"
-                    />
-                </div>
-
-                {/* Loại nhà */}
-                <div className="mb-4">
-                    <label className="block text-lg font-medium text-gray-700">Loại nhà</label>
-                    <select
-                        name="type"
-                        value={houseData.type}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition"
-                    >
-                        <option value="Căn hộ">Căn hộ</option>
-                        <option value="Nhà riêng">Nhà riêng</option>
-                        <option value="Biệt thự">Biệt thự</option>
-                    </select>
-                </div>
-
-                {/* Giá thuê */}
-                <div className="mb-4">
-                    <label className="block text-lg font-medium text-gray-700">Giá thuê (VNĐ/tháng)</label>
-                    <input
-                        type="number"
-                        name="price"
-                        value={houseData.price}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition"
-                    />
-                </div>
-
-                {/* Diện tích */}
-                <div className="mb-4">
-                    <label className="block text-lg font-medium text-gray-700">Diện tích (m²)</label>
-                    <input
-                        type="number"
-                        name="area"
-                        value={houseData.area}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition"
-                    />
-                </div>
-
-                {/* Ảnh */}
-                <div className="mb-4">
-                    <label className="block text-lg font-medium text-gray-700">Ảnh</label>
-                    <input
-                        type="text"
-                        name="img"
-                        value={houseData.img}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition"
-                    />
-                </div>
-
-                {/* Tình trạng */}
-                <div className="mb-4">
-                    <label className="block text-lg font-medium text-gray-700">Tình trạng</label>
-                    <select
-                        name="status"
-                        value={houseData.status}
-                        onChange={handleChange}
-                        className="w-full p-3 border border-gray-300 rounded-md focus:border-blue-500 focus:outline-none transition"
-                    >
-                        <option value="available">Còn trống</option>
-                        <option value="rented">Đã thuê</option>
-                    </select>
-                </div>
-
-                {/* Nút Lưu Chỉnh Sửa */}
-                <button
-                    type="submit"
-                    className="w-full p-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition duration-300"
-                >
-                    Lưu Chỉnh Sửa
-                </button>
-            </form>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Chỉnh sửa nhà</h1>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={house.name}
+          onChange={handleInputChange}
+          placeholder="Tên nhà"
+        />
+        <input
+          type="text"
+          name="location"
+          value={house.location}
+          onChange={handleInputChange}
+          placeholder="Địa điểm"
+        />
+        <input
+          type="text"
+          name="price"
+          value={house.price}
+          onChange={handleInputChange}
+          placeholder="Giá thuê"
+        />
+        <input
+          type="text"
+          name="area"
+          value={house.area}
+          onChange={handleInputChange}
+          placeholder="Diện tích"
+        />
+        <select
+          name="status"
+          value={house.status}
+          onChange={handleInputChange}
+        >
+          <option value="available">Còn trống</option>
+          <option value="rented">Đã thuê</option>
+        </select>
+        <input
+          type="text"
+          name="img"
+          value={house.img}
+          onChange={handleInputChange}
+          placeholder="Đường dẫn ảnh"
+        />
+        <button type="submit">Cập nhật</button>
+      </form>
+    </div>
+  );
 };
 
 export default HouseEdit;
+

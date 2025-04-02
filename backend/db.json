@@ -1,86 +1,180 @@
 {
   "users": [
     {
-      "id": "1",
-      "username": "user1",
-      "email": "user1@example.com",
-      "phone": "0123456789",
-      "password": "password123"
-    },
-    {
       "id": "2",
       "username": "user2",
       "email": "user2@example.com",
       "phone": "0987654321",
-      "password": "password456"
+      "password": "password456",
+      "role": "user",
+      "blocked": false
     },
     {
       "id": "3",
       "username": "admin",
       "email": "admin@example.com",
       "phone": "0111222333",
-      "password": "adminpass"
+      "password": "adminpass",
+      "role": "admin"
     },
     {
       "id": "4",
-      "username": "john_doe",
+      "username": "user3",
       "email": "john.doe@example.com",
       "phone": "0999888777",
-      "password": "johnpassword"
+      "password": "johnpassword",
+      "role": "user",
+      "blocked": false
     },
     {
-      "id": "5",
-      "username": "jane_doe",
-      "email": "jane.doe@example.com",
-      "phone": "0777666555",
-      "password": "janepassword"
+      "id": "6",
+      "username": "user30",
+      "email": "nguyen@gmail.com",
+      "phone": "0123456789",
+      "password": "matkhau123",
+      "role": "user",
+      "blocked": false
     },
     {
-      "id": "0f59",
-      "username": "user10",
-      "email": "user10@example.com",
-      "phone": "0123456891",
-      "password": "password123"
-    },
-    {
-      "id": "19ac",
-      "username": "nguyen",
-      "email": "nguyengialam@gmail.com",
-      "phone": "0961598963",
-      "password": "matkhau231"
+      "id": "7",
+      "username": "user50",
+      "email": "nguyenthi@gmail.com",
+      "phone": "0123456987",
+      "password": "matkhau789",
+      "role": "user",
+      "blocked": true
     }
   ],
   "houses": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Căn hộ cao cấp",
       "location": "TP. Hồ Chí Minh",
       "type": "Căn hộ",
       "price": "10.000.000 VNĐ/tháng",
       "area": "80m²",
       "status": "available",
-      "img": "path_to_image"
+      "img": "/assets/hinhanh/hinh1.png"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Biệt thự ven biển",
       "location": "Đà Nẵng",
       "type": "Biệt thự",
       "price": "25.000.000 VNĐ/tháng",
       "area": "150m²",
       "status": "rented",
-      "img": "path_to_image"
+      "img": "/assets/hinhanh/hinh2.png"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Nhà phố trung tâm",
       "location": "Hà Nội",
       "type": "Nhà riêng",
       "price": "15.000.000 VNĐ/tháng",
       "area": "90m²",
       "status": "available",
+      "img": "/assets/hinhanh/hinh3.png"
+    },
+    {
+      "id": "4",
+      "name": "Căn hộ biển",
+      "location": "Nha Trang",
+      "type": "Căn hộ",
+      "price": "20.000.000 VNĐ/tháng",
+      "area": "100m²",
+      "status": "available",
+      "img": "path_to_image"
+    },
+    {
+      "id": "5",
+      "name": "Biệt thự sang trọng",
+      "location": "Phú Quốc",
+      "type": "Biệt thự",
+      "price": "50.000.000 VNĐ/tháng",
+      "area": "300m²",
+      "status": "available",
+      "img": "path_to_image"
+    },
+    {
+      "id": "6",
+      "name": "Căn hộ trung tâm",
+      "location": "Hà Nội",
+      "type": "Căn hộ",
+      "price": "12.000.000 VNĐ/tháng",
+      "area": "70m²",
+      "status": "rented",
+      "img": "path_to_image"
+    },
+    {
+      "id": "7",
+      "name": "Nhà phố hiện đại",
+      "location": "Hồ Chí Minh",
+      "type": "Nhà riêng",
+      "price": "18.000.000 VNĐ/tháng",
+      "area": "120m²",
+      "status": "available",
+      "img": "path_to_image"
+    },
+    {
+      "id": "8",
+      "name": "Biệt thự ven hồ",
+      "location": "Đà Lạt",
+      "type": "Biệt thự",
+      "price": "30.000.000 VNĐ/tháng",
+      "area": "250m²",
+      "status": "rented",
+      "img": "path_to_image"
+    },
+    {
+      "id": "9",
+      "name": "Căn hộ cao cấp gần biển",
+      "location": "Nha Trang",
+      "type": "Căn hộ",
+      "price": "22.000.000 VNĐ/tháng",
+      "area": "95m²",
+      "status": "available",
+      "img": "path_to_image"
+    },
+    {
+      "id": "10",
+      "name": "Nhà phố độc đáo",
+      "location": "Cần Thơ",
+      "type": "Nhà riêng",
+      "price": "14.000.000 VNĐ/tháng",
+      "area": "110m²",
+      "status": "available",
+      "img": "path_to_image"
+    },
+    {
+      "id": "11",
+      "name": "Căn hộ tiện nghi",
+      "location": "Hà Nội",
+      "type": "Căn hộ",
+      "price": "8.000.000 VNĐ/tháng",
+      "area": "60m²",
+      "status": "rented",
+      "img": "path_to_image"
+    },
+    {
+      "id": "12",
+      "name": "Biệt thự gần bãi biển",
+      "location": "Vũng Tàu",
+      "type": "Biệt thự",
+      "price": "35.000.000 VNĐ/tháng",
+      "area": "200m²",
+      "status": "available",
+      "img": "path_to_image"
+    },
+    {
+      "id": "13",
+      "name": "Nhà phố gần trung tâm",
+      "location": "Đà Nẵng",
+      "type": "Nhà riêng",
+      "price": "20.000.000 VNĐ/tháng",
+      "area": "130m²",
+      "status": "available",
       "img": "path_to_image"
     }
-    
   ]
 }
