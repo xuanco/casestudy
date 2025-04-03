@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+
+
 const provinces = [
     "An Giang", "Bà Rịa - Vũng Tàu", "Bắc Giang", "Bắc Kạn", "Bạc Liêu", "Bắc Ninh", "Bến Tre", "Bình Định", "Bình Dương", "Bình Phước",
     "Bình Thuận", "Cà Mau", "Cần Thơ", "Cao Bằng", "Đà Nẵng", "Đắk Lắk", "Đắk Nông", "Điện Biên", "Đồng Nai", "Đồng Tháp", "Gia Lai",
@@ -124,7 +126,7 @@ function Dashboard() {
                                             <img src={house.img} alt={house.name} className="w-20 h-20 object-cover mx-auto" />
                                         </td>
                                         <td className="border border-black p-2">
-                                        <Link to={`/housedetail/${house.id}`} className="text-blue-500">{house.name}</Link>
+                                        <Link to={`/admin/housedetail/${house.id}`} className="text-blue-500">{house.name}</Link>
                                         </td>
                                         <td className="border border-black p-2">{house.location}</td>
                                         <td className="border border-black p-2">{house.type}</td>
