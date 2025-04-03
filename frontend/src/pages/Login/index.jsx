@@ -42,12 +42,13 @@ const SignIn = () => {
                 }
                 
                 message.success("Đăng nhập thành công!");
+                localStorage.setItem("userId", user.id);
                 localStorage.setItem("user", JSON.stringify(user));
 
                 if (user.role === "admin") {
                     navigate("/admin/managerusers");
                 } else {
-                    navigate("/");
+                    navigate("/admin/home");
                 }
             } else {
                 message.error("Tên đăng nhập hoặc mật khẩu không đúng.");

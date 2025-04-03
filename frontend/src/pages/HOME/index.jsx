@@ -124,7 +124,7 @@ function Dashboard() {
                                             <img src={house.img} alt={house.name} className="w-20 h-20 object-cover mx-auto" />
                                         </td>
                                         <td className="border border-black p-2">
-                                            <Link to={`/house-detail/${house.id}`} className="text-blue-500">{house.name}</Link>
+                                        <Link to={`/housedetail/${house.id}`} className="text-blue-500">{house.name}</Link>
                                         </td>
                                         <td className="border border-black p-2">{house.location}</td>
                                         <td className="border border-black p-2">{house.type}</td>

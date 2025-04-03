@@ -42,7 +42,7 @@
       "phone": "0123456987",
       "password": "matkhau789",
       "role": "user",
-      "blocked": true
+      "blocked": false
     }
   ],
   "houses": [
@@ -75,106 +75,38 @@
       "area": "90m²",
       "status": "available",
       "img": "/assets/hinhanh/hinh3.png"
+    }
+  ],
+  "bookings": [
+    {
+      "id": "101",
+      "userId": "2",
+      "houseId": "1",
+      "date": "2025-04-05",
+      "status": "pending"
     },
     {
-      "id": "4",
-      "name": "Căn hộ biển",
-      "location": "Nha Trang",
-      "type": "Căn hộ",
-      "price": "20.000.000 VNĐ/tháng",
-      "area": "100m²",
-      "status": "available",
-      "img": "path_to_image"
+      "id": "102",
+      "userId": "6",
+      "houseId": "3",
+      "date": "2025-04-10",
+      "status": "confirmed"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "201",
+      "userId": "2",
+      "houseId": "1",
+      "rating": 5,
+      "comment": "Căn hộ rất sạch sẽ và thoải mái!"
     },
     {
-      "id": "5",
-      "name": "Biệt thự sang trọng",
-      "location": "Phú Quốc",
-      "type": "Biệt thự",
-      "price": "50.000.000 VNĐ/tháng",
-      "area": "300m²",
-      "status": "available",
-      "img": "path_to_image"
-    },
-    {
-      "id": "6",
-      "name": "Căn hộ trung tâm",
-      "location": "Hà Nội",
-      "type": "Căn hộ",
-      "price": "12.000.000 VNĐ/tháng",
-      "area": "70m²",
-      "status": "rented",
-      "img": "path_to_image"
-    },
-    {
-      "id": "7",
-      "name": "Nhà phố hiện đại",
-      "location": "Hồ Chí Minh",
-      "type": "Nhà riêng",
-      "price": "18.000.000 VNĐ/tháng",
-      "area": "120m²",
-      "status": "available",
-      "img": "path_to_image"
-    },
-    {
-      "id": "8",
-      "name": "Biệt thự ven hồ",
-      "location": "Đà Lạt",
-      "type": "Biệt thự",
-      "price": "30.000.000 VNĐ/tháng",
-      "area": "250m²",
-      "status": "rented",
-      "img": "path_to_image"
-    },
-    {
-      "id": "9",
-      "name": "Căn hộ cao cấp gần biển",
-      "location": "Nha Trang",
-      "type": "Căn hộ",
-      "price": "22.000.000 VNĐ/tháng",
-      "area": "95m²",
-      "status": "available",
-      "img": "path_to_image"
-    },
-    {
-      "id": "10",
-      "name": "Nhà phố độc đáo",
-      "location": "Cần Thơ",
-      "type": "Nhà riêng",
-      "price": "14.000.000 VNĐ/tháng",
-      "area": "110m²",
-      "status": "available",
-      "img": "path_to_image"
-    },
-    {
-      "id": "11",
-      "name": "Căn hộ tiện nghi",
-      "location": "Hà Nội",
-      "type": "Căn hộ",
-      "price": "8.000.000 VNĐ/tháng",
-      "area": "60m²",
-      "status": "rented",
-      "img": "path_to_image"
-    },
-    {
-      "id": "12",
-      "name": "Biệt thự gần bãi biển",
-      "location": "Vũng Tàu",
-      "type": "Biệt thự",
-      "price": "35.000.000 VNĐ/tháng",
-      "area": "200m²",
-      "status": "available",
-      "img": "path_to_image"
-    },
-    {
-      "id": "13",
-      "name": "Nhà phố gần trung tâm",
-      "location": "Đà Nẵng",
-      "type": "Nhà riêng",
-      "price": "20.000.000 VNĐ/tháng",
-      "area": "130m²",
-      "status": "available",
-      "img": "path_to_image"
+      "id": "202",
+      "userId": "6",
+      "houseId": "3",
+      "rating": 4,
+      "comment": "Vị trí thuận tiện nhưng hơi ồn vào ban đêm."
     }
   ]
 }
