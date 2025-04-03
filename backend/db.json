@@ -43,6 +43,32 @@
       "password": "matkhau789",
       "role": "user",
       "blocked": false
+    },
+    {
+      "id": "471a",
+      "username": "user55",
+      "email": "nhanhnhen2@gmail.com",
+      "phone": "0123456789",
+      "password": "matkhau",
+      "role": "user"
+    },
+    {
+      "id": "NaN",
+      "username": "user503",
+      "email": "nhanhnhen3145@gmail.com",
+      "phone": "0123987654",
+      "password": "matkhau",
+      "role": "user",
+      "blocked": false
+    },
+    {
+      "id": "NaN",
+      "username": "user100",
+      "email": "nhanhnhenlam@gmail.com",
+      "phone": "0321654987",
+      "password": "matkhau",
+      "role": "user",
+      "blocked": false
     }
   ],
   "houses": [

@@ -130,7 +130,7 @@ const Register = () => {
                     Đăng ký
                 </Button>
                 <div style={{ textAlign: "center" }}>
-                    <Link href="/sign-in">Đã có tài khoản? Đăng nhập</Link>
+                    <Link href="/login">Đã có tài khoản? Đăng nhập</Link>
                 </div>
             </Card>
         </div>
